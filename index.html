@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css" type="text/css">
+  <title>CSS Selectors & Specificity</title>
+</head>
+<body>
+  <h1>CSS Selectors & Specificity</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Example</th>
+        <th>Precedence</th>
+        <th>Considerations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><p>The <span class="selector">universal</span> selector (*) applies a CSS rule to all html elements.</p></td>
+        <td><code>* { margin: 0; }</code><br><br>
+        <p>/* sets margin of all html elements to zero */</p>
+        </td>
+        <td><p>None</p></td>
+        <td><p>This selector should be avoided, and instead more specific selectors should be used.</p></td>
+      </tr>
+      <tr>
+        <td><p>The <span class="selector">type</span> selector applies a CSS rule to specified html elements.</p></td>
+        <td><code>body { margin: 10 px; }</code><br><br>
+        <p>/* sets margin of body element to 10 px */</p><br><br>
+        <code>h1, h2, p {border: 1px solid black;}</code><br><br>
+        <p>/* defines a border around all &lt;h1&gt;, &lt;h2&gt;, and &lt;p&gt; elements */</p>
+        </td>
+        <td><p>Overrides the universal selector</p></td>
+        <td><p>The second example shows how this selector can be used to avoid repetitive code.</p></td>
+      </tr>
+      <tr>
+        <td><p>The <span class="selector">class</span> selector applies a CSS rule to all html elements with a class attribute having the same value (the same class name). A period is placed before the class name.</p></td>
+        <td><code>&lt;p class="green"&gt;<span class="green">This is paragraph 1.</span>&lt;/p&gt;
+        <br><br>&lt;p&gt;This is &lt;span class="green"&gt;<span class="green">paragraph 2.</span>&lt;/span&gt;&lt;/p&gt;</code><br><br><br>
+        <code>.green {color: green; }</code><br><br>
+        <p>/* sets the color of the text in paragraph 1 and text within span tags in paragraph 2 to green, but does not affect other text in paragraph 2.*/</p>   
+        </td>
+        <td><p>Overrides the type and universal selectors</p></td>
+        <td><p>This selector makes code writing more efficient because the same style rule can be applied to more than one element. An html element can have more than one class.</p></td>
+      </tr>
+      <tr>
+        <td><p>The <span class="selector">descendant combinator</span> selector applies a CSS rule to nested html elements or to an element within a class.</p></td>
+        <td><code>&lt;p class="red"&gt;This paragraph has the same class name as the &lt;a&gt; tag below, but will not be colored red.&lt;/p&gt;<br><br>
+        &lt;ul&gt;<br>
+        &lt;li class="decorate"&gt;&lt;a class="red"&gt;<span class="decorate">click me</span>&lt;/a&gt;<br>&lt;/li&gt;<br>
+        &lt;li&gt;<span class=" decorate magenta">&lt;a&gt;don"t click me&lt;/a&gt;</span>&lt;/li&gt;<br>
+        &lt;ul/&gt;
+        <br><br>
+        li { text-decoration: underline; }</code><br><br>
+        <p>/* underlines text within the &lt;li&gt; tag*/</p><br>
+        <code>li a.red { color: red; }</code><br><br>
+        <p>/* only &lt;a&gt; tag with class name of "red" gets red text, but text in paragraph with class name "red" is not affected */</p>
+        </td>
+        <td><p>Overrides type rule of parent element or type rule for child elements</p></td>
+        <td><p>The last example given demonstrates the use of "chaining," where multiple selectors are combined, allowing for greater specificity.</p></td>
+      </tr>
+      <tr>
+        <td><p>The <span class="selector">id</span> selector (#) applies a CSS rule to an element with the named id value.</p></td>
+        <td><code>&lt;div id="container"&gt;<span class="background">[content of division]</span>&lt;/div&gt;<br><br>
+        &lt;div&gt;[content of division]&lt;/div&gt;<br><br>
+        #container { background-color: gold;}</code><br><br> 
+        <p>/* sets the background-color to gold of the div element with the id name of "container" */</p>
+        </td>
+        <td><p>Overrides combinator, class, type, and universal selectors</p></td>
+        <td><p>Id values are unique. No two elements on a page can have the same id value.</p></td>
+      </tr>
+      <tr>
+        <td><p>The <span class="selector">attributes</span> selector applies a CSS rule to an html element with the specified attribute.</p></td>
+        <td><code>&lt;a href="index.html"&gt;<span class="text-transform">I am an html file.</span>&lt;/a&gt;<br><br>
+          [href]{ text-transform: uppercase; }</code><br><br>
+          <p>/*text within &lt;a&gt; tag is made uppercase*/</p></td>
+          <td><p>Overrides class, type, and universal selectors</p></td>
+          <td><p>Other attributes like src could be used as CSS selectors. This selector also allows for searching for an element by its attribute value.</p></td>
+     </tr>
+     <tr>
+        <td><p>The <span class="selector">psuedo-classes</span> selector (written as a colon followed by a name) applies CSS rules to affect the different states of an element, such as when a user hovers or clicks on an element.</p></td>
+        <td><code>&lt;p&gt;<span class="hover">Hover over me!</span>&lt;/p&gt;<br><br>p:hover { color: lime; }</code><br><br>
+        <p>/*changes the color of the paragraph to lime on hover. <span class="red">Try it!</span>*/</p>   
+       </td>
+        <td><p>The specificty of this selector is self-defined.</p></td>
+        <td><p>This selector applies to any element. Other states of elements include focus, visited, disabled, active.</p></td>
+     </tr>
+     <tr>
+     <tr>
+        <td><p>The <span class="selector">important</span> selector (!important) applies a CSS rule of the highest priority.</p></td>
+        <td><code>&lt;h1 id="priority"&gt;<span id="priority">This is important!</span>&lt;/h1&gt;<br><br>
+        #priority { font-size: 24px; text-decoration: underline; }</code><br><br> 
+        <p>/* sets the font-size to 24 pixels and underlines the &lt;h1&gt; heading with the id name of "priority" */</p><br><br>
+        <code>&lt;h1&gt;<span class="important">This is important!</span>&lt;/h1&gt;<br><br>
+        h1 { font-size: small !important; font-style: italic; }</code><br><br>
+        <p>/* overrides the id (#priority) rule and sets the font-size to small and italic*/</p>
+        </td>
+        <td><p>Overrides all other CSS rules</p></td>
+        <td><p>This selector should be avoided because it disrupts the rules of specificity, and the rules for overriding it are complex.</p></td>
+      </tr>
+        <td><p>A <span class="selector">subsequent-in-time same-level</span> selector applies a CSS rule that nullifies an earlier one.</p>
+        </td>
+        <td>
+        <code>&lt;p class="red"&gt;<span class="green">I will be green, not red.</span>&lt;/p&gt;<br><br>
+        p { color: red;}<br>
+        p {color: green;}<br><br>        
+        </code>
+        <p>/*The paragraph is colored green because the "green" rule appears second in time.</p>
+        </td>
+        <td><p>See above</p></td>
+        <td><p>This rule applies to all selectors.</p></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

@@ -1,0 +1,84 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: gainsboro;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  color: rebeccapurple;
+  text-align: center;
+}
+
+table {
+  border: 2px solid darkorchid;
+  margin: 0 auto;
+  width: 800px;
+  height: 1000px;
+}
+
+thead {
+  background-color: plum;
+}
+
+td {
+  border: 1px solid darkorchid;
+  padding: 10px;
+  text-align: center;  
+}
+
+p {
+  color: blue;
+  font-weight: bold;
+}
+
+.selector {
+  color:tomato;
+  font-style: italic;
+}
+
+code {
+  font-family: monospace;
+  color: black;
+  font-size: 14px;
+}
+
+.green {
+  color: green;
+}
+
+.decorate {
+  text-decoration:underline;
+}
+
+.magenta {
+  color: magenta;
+}
+
+.red {
+  color: red; 
+}
+
+.background {
+  background-color: gold;
+}
+
+.text-transform {
+  text-transform: uppercase;
+}
+
+span.hover:hover {
+  color: lime;
+}
+
+#priority {
+  font-size: 24px;
+  text-decoration: underline;
+}
+
+.important {
+  font-size: small;
+  font-style: italic;
+}
